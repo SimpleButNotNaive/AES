@@ -13,16 +13,19 @@ using namespace std;
 class aes_abstract{
 public:
     static uint8 s_box[16][16];    
-    static uint32 r_cont[10];
     static uint8 mix_column_matrix[4][4];
+    static uint8 s_box_inv[16][16];
+    static uint8 mix_column_matrix_inv[4][4];
+
+    static uint32 r_cont[10];
     uint8 state[4][4];
     uint32 round_key[44];
     int current_round = 0;
 
     void AddRoundKey();
     void SubBytes();
-
     void MixColumns();
+
     uint8 FieldMul(uint8, uint8);
 
     uint32 bytes_to_word(uint8*);
@@ -32,7 +35,7 @@ public:
     uint32 SubWord(uint32);
     uint8 SubByte(uint8);
 
-    void general_roundkey(uint8 [16]);
+    void generate_roundkey(uint8 [16]);
 
     void print_array(uint8 a[16]);
     void xor_group(uint8 a[16], uint8 b[16]);

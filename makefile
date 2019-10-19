@@ -7,7 +7,7 @@ HPP := $(wildcard *.hpp)
 CC  := g++
 
 
-all: run
+all: main run
 
 
 main:$(CPP) $(HPP)
