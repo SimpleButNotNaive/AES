@@ -4,12 +4,8 @@ void aes_encryptor::ShiftRows() {
     int temp = state[1][0];
     for (int i = 1; i < 4; i++) {
         state[1][i - 1] = state[1][i];
-        // printf("%x %x %x %x\n", state[1][0], state[1][1],
-        // state[1][2],state[1][3]);
     }
     state[1][3] = temp;
-    // printf("%x %x %x %x\n", state[1][0], state[1][1],
-    // state[1][2],state[1][3]);
 
     temp = state[2][0];
     int temp2 = state[2][1];
@@ -18,7 +14,7 @@ void aes_encryptor::ShiftRows() {
     }
     state[2][2] = temp;
     state[2][3] = temp2;
-    ;
+
     //左移三位等加于右移一位
     temp = state[3][3];
     for (int i = 2; i >= 0; i--) {
@@ -114,16 +110,7 @@ void aes_encryptor::encrypt_one_group(uint8 p_text[16]) {
 
     SubBytes();
     ShiftRows();
-    // printf("加密：最后一轮轮密钥加\n");
-    // printf("加密：最后一轮轮密钥加之前:\n");
-    // printf("加密所使用密钥：第%d轮\n", current_round);
-    // for(int k = 0;k < 4;k++){
-    //     printf("%x ", round_key[4*current_round + k]);
-    // }
-    // printf("\n");
     AddRoundKey();
-    // printf("加密：最后一轮轮密钥加之后:\n");
-    // print_state();
 
     for(int i = 0;i < 16;i++){
         p_text[i] = state[i % 4][i / 4];

@@ -1,7 +1,5 @@
 .PHONY:all run clean
 
-# CPP := $(wildcard *.cpp)
-# HPP := $(wildcard *.hpp)
 CPP := $(wildcard *.cpp)
 HPP := $(wildcard *.hpp)
 CC  := g++

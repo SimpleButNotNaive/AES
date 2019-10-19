@@ -100,16 +100,7 @@ void aes_decryptor::decrypt_one_group(uint8 cipher[16]) {
         state[i % 4][i / 4] = cipher[i];
     }
 
-    // printf("解密：第一轮轮密钥加之前\n");
-    // print_state();
-    // printf("解密所使用密钥：第%d轮\n", current_round);
-    // for(int k = 0;k < 4;k++){
-    //     printf("%x ", round_key[4*current_round + k]);
-    // }
-    // printf("\n");
     AddRoundKey();
-    // printf("解密：第一轮轮密钥加之后\n");
-    // print_state();
     for (int i = 1; i < NROUND; i++) {
         ShiftRows();
         SubBytes();

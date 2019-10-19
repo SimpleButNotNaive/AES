@@ -74,17 +74,10 @@ void aes_abstract::AddRoundKey() {
     //表示第current_round轮的密钥轮加，从0开始
     for (int k = 0; k < 4; k++) {
         uint32 current_key = round_key[4 * current_round + k];
-        // printf("current_round:%d\n", current_round);
-        // printf("current_key:%x\n", current_key);
-        // printf("密钥：%x\n", current_key);
-        // printf("密钥轮加前：%x %x %x %x\n", state[0][k], state[1][k],
-        // state[2][k], state[3][k]);
         state[0][k] = state[0][k] ^ (uint8)(current_key >> 24);
         state[1][k] = state[1][k] ^ (uint8)((current_key & 0x00ff0000) >> 16);
         state[2][k] = state[2][k] ^ (uint8)((current_key & 0x0000ff00) >> 8);
         state[3][k] = state[3][k] ^ (uint8)(current_key);
-        // printf("密钥轮加后：%x %x %x %x\n", state[0][k], state[1][k],
-        // state[2][k], state[3][k]);
     }
     current_round++;
 }
