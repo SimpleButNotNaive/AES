@@ -2,7 +2,7 @@
 
 # CPP := $(wildcard *.cpp)
 # HPP := $(wildcard *.hpp)
-CPP := aes.cpp main.cpp
+CPP := $(wildcard *.cpp)
 HPP := $(wildcard *.hpp)
 CC  := g++
 
