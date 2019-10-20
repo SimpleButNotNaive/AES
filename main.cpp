@@ -1,22 +1,25 @@
-#include "encryptor.hpp"
-#include "decryptor.hpp"
 #include "const_value.hpp"
+#include "decryptor.hpp"
+#include "encryptor.hpp"
 
-int main(){
+int main() {
     aes_encryptor encrypter;
     aes_decryptor decryptor;
-    
-	vector<vector<uint8>> cipher;
+
+    vector<vector<uint8>> cipher;
 
     cipher = encrypter.encryption(plain_text, key, IV);
 
     printf("密文：\n");
-    for(auto group : cipher){
-        for(int i = 0;i < group.size();i++){
-            printf("%x", group[i]);
+    for (auto group : cipher) {
+        for (int i = 0; i < group.size(); i++) {
+            if (group[i] <= 0x0f)
+                printf("0%x", group[i]);
+            else
+                printf("%x", group[i]);
         }
-        printf("\n");
     }
+    printf("\n");
 
     string text = decryptor.decryption(cipher, key, IV);
     printf("明文：\n");

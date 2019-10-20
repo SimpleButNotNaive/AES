@@ -15,7 +15,7 @@ public:
     void reverse_round_key();
     string decryption(vector<vector<uint8>> cipher, string key, string init_vector);
     void splice(uint8*, uint8[16]);
-    void truncate(uint8* p_text_array, int size);
+    int truncate(uint8* p_text_array, int size);
     void decrypt_one_group(uint8 cipher[16]);
 };
 

@@ -55,18 +55,19 @@ string aes_decryptor::decryption(vector<vector<uint8>> cipher, string key,
         }
     }
 
-    truncate(p_text_array, cipher.size() * 4);
+    int truncate_size = truncate(p_text_array, cipher.size() * 16);
 
-    string ret(p_text_array, p_text_array + cipher.size() * 16);
+    string ret(p_text_array, p_text_array + cipher.size() * 16 - truncate_size);
 
     delete p_text_array;
 
     return ret;
 }
 
-void aes_decryptor::truncate(uint8* p_text_array, int size){
+int aes_decryptor::truncate(uint8* p_text_array, int size){
     int truncate_size = p_text_array[size - 1];
     p_text_array[size - truncate_size] = '\0';
+    return truncate_size;
 }
 
 void aes_decryptor::splice(uint8* p_text_array, uint8 group[16]){
