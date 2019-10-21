@@ -11,7 +11,7 @@ typedef unsigned char uint8;
 using namespace std;
 
 class aes_abstract{
-public:
+protected:
     static uint8 s_box[16][16];    
     static uint8 mix_column_matrix[4][4];
     static uint8 s_box_inv[16][16];
